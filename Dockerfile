@@ -25,6 +25,3 @@ EXPOSE 8080
 
 # Set the environment variable for Flask
 ENV FLASK_APP=app.py
-
-# Run the application with Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
