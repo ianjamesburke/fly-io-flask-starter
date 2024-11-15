@@ -23,12 +23,12 @@ supabase = create_client(supabase_url, supabase_key)
 ### Check for deployment environment ###
 if os.environ.get('FLASK_APP'):
     print("Running in production")
-    print("Loading dotenv")
-    from dotenv import load_dotenv
-    load_dotenv()
 
 else:
     print("Running in development")
+    print("Loading dotenv")
+    from dotenv import load_dotenv
+    load_dotenv()
 
 
 
