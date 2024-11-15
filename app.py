@@ -1,3 +1,20 @@
+### INIT ###
+
+if os.environ.get('FLASK_APP'):
+    print("Running in production")
+
+else:
+    print("Running in development")
+    print("Loading dotenv")
+    from dotenv import load_dotenv
+    load_dotenv()
+
+
+
+
+
+### IMPORTS ###
+
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, session
 from auth_module import login_user, register_user, logout_user, login_required, is_authenticated
 from supabase import create_client
@@ -20,15 +37,7 @@ if not supabase_url or not supabase_key:
 supabase = create_client(supabase_url, supabase_key)
 
 
-### Check for deployment environment ###
-if os.environ.get('FLASK_APP'):
-    print("Running in production")
 
-else:
-    print("Running in development")
-    print("Loading dotenv")
-    from dotenv import load_dotenv
-    load_dotenv()
 
 
 

@@ -2,9 +2,7 @@ from functools import wraps
 from flask import session, redirect, url_for, flash, request
 from supabase import create_client, Client
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
 
 # Check for Supabase environment variables
 url: str = os.environ.get("SUPABASE_URL")
