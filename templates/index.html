@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Hello World{% endblock %}
+
+{% block content %}
+    <style>
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+    <div class="centered">
+        <h1>Hello World</h1>
+        <p>Welcome, {{ user_email if user_email else "Stranger" }}</p>
+    </div>
+{% endblock %} 
