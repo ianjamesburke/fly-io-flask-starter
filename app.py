@@ -6,15 +6,28 @@ import os
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'your-secret-key')  # Change this in production
 
-# Check for Supabase environment variables
+
+
+
+### SUPABASE ###
 supabase_url = os.environ.get("SUPABASE_URL")
 supabase_key = os.environ.get("SUPABASE_KEY")
 
 if not supabase_url or not supabase_key:
     raise EnvironmentError("Supabase URL and Key must be set in environment variables.")
 
-# Initialize Supabase client and ConversationManager
+# Initialize Supabase client
 supabase = create_client(supabase_url, supabase_key)
+
+
+
+
+# Check if running locally to load dotenv
+if not os.environ.get('FLY_APP_NAME'):
+    print("Loading dotenv")
+    from dotenv import load_dotenv
+    load_dotenv()
+
 
 
 
@@ -23,6 +36,7 @@ supabase = create_client(supabase_url, supabase_key)
 def home():
     user_email = session.get('user', {}).get('email', None)
     return render_template('index.html', user_email=user_email)
+
 
 
 # Auth routes
