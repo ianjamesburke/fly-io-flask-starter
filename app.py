@@ -20,14 +20,15 @@ if not supabase_url or not supabase_key:
 supabase = create_client(supabase_url, supabase_key)
 
 
-
-
-# Check if running locally to load dotenv
-if not os.environ.get('FLY_APP_NAME'):
+### Check for deployment environment ###
+if os.environ.get('FLASK_APP'):
+    print("Running in production")
     print("Loading dotenv")
     from dotenv import load_dotenv
     load_dotenv()
 
+else:
+    print("Running in development")
 
 
 
